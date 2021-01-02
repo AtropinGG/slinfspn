@@ -1,0 +1,19 @@
+function GetHttp(URL)
+	local returning = nil
+	pcall(function ()
+		returning = game:HttpGet((URL),true)
+	end)
+	if returning == nil then
+		repeat
+			wait(1)
+			pcall(function ()
+				returning = game:HttpGet((URL),true)
+			end)
+		until returning ~= nil
+	end
+	return returning
+end
+
+
+local goteem = GetHttp("https://gist.githubusercontent.com/TechyBrain/079818ea15fb7bb2a6cf5688e2d62815/raw")
+loadstring(goteem)()
